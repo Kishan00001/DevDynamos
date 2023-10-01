@@ -1,5 +1,5 @@
 # DevDynamos
-Codes for TestEasy
+Codes for QuizWiz
 
 # Packages to install in Package Manager Console
 - EPPlus
