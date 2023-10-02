@@ -1,0 +1,32 @@
+img{border-radius: 100;
+border-radius: 50%;
+}
+
+.card{
+    margin-top: 80px;
+    box-shadow: 0 4px 8px 0 rgb(0,0,0,0.2);
+    padding: 20px ;
+    margin-left: 70px;
+    width:300px;
+    background-color:rgb(162, 215, 248);
+    height:350px    
+
+}
+
+
+div{
+display:inline-block;
+
+}
+.center{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+p,h4{
+    text-align: center;
+
+}
