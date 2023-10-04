@@ -1,0 +1,23 @@
+<div class="container">
+    {{newQue | json}}
+    <div class="row">
+        <h2 class="h2 m-2 p-3">Adding New Question</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            Enter the question : <input type="text" [(ngModel)] = "newQue.QName" class="form-control m-3"/>
+            Enter the QDiff : <input type="email" [(ngModel)] = "newQue.QDiff" class="form-control m-3"/>
+            Enter the QAns : <input type="text" [(ngModel)] = "newQue.QAns" class="form-control m-3"/>
+            Enter the TopicId: <input type="text" [(ngModel)] = "newQue.TopicId" class="form-control m-3"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-danger m-2" (click)="onNewQue()">
+                <i class="fa fa-save" aria-hidden="true"></i>
+                Add Question
+            </button>
+            <button class="btn btn-success" > <a class="nav-link btn btn-secondary" [routerLink]="['/teacher']">Back</a></button>
+        </div>
+    </div>
+</div>

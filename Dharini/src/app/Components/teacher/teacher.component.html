@@ -1,0 +1,39 @@
+<body>
+<div class="header" >Quizz Wizz</div>
+
+<div class="card" >
+    <div class="center"><h3>EDUCATOR PAGE</h3></div>
+    
+  
+<div class="center">
+    
+<img src="../../../assets/images/p8wfashg.png" alt="educator" width="250px" height="200px">
+</div>
+
+   
+    <label for="NofQ">Number Of Questions:</label>
+    <input type="number" class="form-control" name="NofQ" min="1" max="10" >
+    <label for="Category">Select Category</label>
+    <select name="Category" id="categories">
+        <option>Hard</option>
+        <option>Medium</option>
+        <option>Easy</option>
+    </select>
+   <br>
+   
+   <!-- <input type="number" class="form-control" name="NofQ" min="1" max="10" > -->
+   <!-- <p *ngIf="!id.valid && id?.touched">
+       <span class="err" *ngIf="id.errors?.['min']">
+        Number of Questions should be greater than 0
+       </span>
+       <span class="err" *ngIf="id.errors?.['max']">
+           Number of Questions should be less than 10
+        </span>
+   </p> -->
+   <button  > <i class="fa fa-chain"></i><a [href]="'https://example.com/' + dynamicValue">GenerateLink</a></button>
+   <button class="btn btn-success" > <a class="nav-link btn btn-secondary" [routerLink]="['/add']">Add Question</a></button>
+   <button class="btn btn-success" > <a class="nav-link btn btn-secondary" [routerLink]="['/delete']">Delete Question</a></button>
+   <!-- <a [href]="'https://example.com/' + dynamicValue">GenerateLink</a> -->
+   <!-- <a [href]="generatedLink">ClickMe</a> -->
+</div>
+</body>
