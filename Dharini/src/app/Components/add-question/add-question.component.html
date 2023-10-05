@@ -1,0 +1,50 @@
+<body>
+<div class="container">
+    {{newQue | json}}
+    <div class="row">
+        <h1 class="h2 m-2 p-3">Add New Question</h1>
+    </div>
+    <div class="card">
+    <div class="row">
+        <div class="col-md-8">
+            Enter the Question : <input type="text" [(ngModel)] = "newQue.QName" size="80" class="form-control m-1"/> <br>
+            Enter the options: <br>
+            <div class="dInput" v-if="activeStage == 3">
+             
+              A: <input type="text">
+              B: <input type="text"><br>
+        </div>
+        <div class="dInput" v-if="activeStage == 3">
+              C: <input type="text">
+              D: <input type="text"><br>
+        </div>
+        <br>
+        
+            Enter the Question Difficulty :
+             <!-- <input type="text" [(ngModel)] = "newQue.QDiff" size=""/><br><br> -->
+             <select [(ngModel)]="newQue.QDiff">
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+             </select><br><br>
+            Enter the Question Answer : <input type="text" [(ngModel)] = "newQue.QAns"  size="50"/><br><br>
+            Enter the TopicId: <input type="text" [(ngModel)] = "newQue.TopicId" size="50"/>
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="dInput" v-if="activeStage == 3">
+            
+            <button class="btn btn-success m-3" (click)="onNewQue()">
+                <i class="fa fa-save" aria-hidden="true"></i>
+                Add Question
+            </button>
+            <button class="btn btn-danger" ><i class=" fa-solid fa-arrow-pointer "></i> <a  [routerLink]="['/teacher']">Back</a></button>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>

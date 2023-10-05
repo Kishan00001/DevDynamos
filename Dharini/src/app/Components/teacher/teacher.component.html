@@ -1,0 +1,64 @@
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="card card0 border-0">
+        <h2 class=" text-center " style="color:#0381b3;"> Educator Page</h2>
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                    <img src="../../../assets/images/Educator.jpg" class="image" alt="Not Available" />
+                </div>
+            </div>
+            <div class="col-lg-6">
+    
+                    <div class="card2 card border-0 px-4 py-5">
+                        <div class="row px-3">
+                           <label style="color:#0381b3;">Select Topic <select>
+                            </select></label>
+                            <label style="color:#0381b3;" class="mb-1" id="NofQ">
+                                <h6 class="mb-0 text-sm" [(ngModel)]="total">Number Of Questions</h6>
+                            </label>
+                            <input type="number" class="form-control" name="NofQ" min="1" max="10">
+                        </div>
+    
+                        <div class="row px-3">
+                            <!-- //<label style="color:#0381b3;" class="mb-1">
+                                <h6 class="mb-0 text-sm">Select Category</h6>
+                            </label> -->
+                            <h6 style="color: #0381b3;" class="mb-0 text-sm">Select Category</h6>
+                            <!-- <select class="form-control" name="Category" id="categories">
+                                <option>Easy</option>
+                                <option>Medium</option>
+                                <option>Hard</option>
+                            </select> -->
+                            <div class="dInput" v-if="activeStage == 3">
+                            <label for="easyValue">Easy
+                                <input type="number"  [(ngModel)]="easy" placeholder="Easy">
+                            </label>
+                            <label for="mediumValue">Medium
+                                <input type="number"  [(ngModel)]="medium" placeholder="Medium">
+                            </label>
+                           
+                            <label for="hardValue">Hard
+                            <input type="number" (click)="addNumbers()"  [(ngModel)]="result" placeholder="Hard"> 
+                            </label></div>
+                             <!-- <p> {{ result }}  </p> -->
+                             
+                            
+                           
+                        </div><br>
+    
+                        <div class="button1">
+                            <button> <i class="fa fa-chain"></i><a
+                                    [href]="'https://example.com/' + dynamicValue">GenerateLink</a></button><br><br>
+                            <button class="btn btn-success"> <a class="nav-link btn btn-secondary"
+                                    [routerLink]="['/add']">Add Question</a></button><br><br>
+                            <button class="btn btn-success"> <a class="nav-link btn btn-secondary"
+                                    [routerLink]="['/delete']">Delete Question</a></button>
+
+                        </div>
+                            </div>
+                        
+            </div>
+        </div>
+    </div>
+</div>
+
