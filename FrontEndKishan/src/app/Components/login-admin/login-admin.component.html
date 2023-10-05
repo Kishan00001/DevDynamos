@@ -1,0 +1,65 @@
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="card card0 border-0">
+        <h2 class=" text-center " style="color:#0381b3;"> LOGIN AS ADMIN </h2>
+        <span style="color:darkred;font-size: medium; text-align: center;">(Authorized Access Only)</span>
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                    <img src="assets/Images/adminlogin.png" class="image" alt="Not Available" />
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <!-- <form [formGroup] = "UserForm" (ngSubmit)="generateOtp()"> -->
+                <form [formGroup] = "UserForm">
+                    <div class="card2 card border-0 px-4 py-5">
+
+                        <div class="row px-3">
+                                <label style="color:#0381b3;" class="mb-1">
+                                    <h6 class="mb-0 text-sm">Email Address</h6>
+                                </label>
+                                <input class="mb-3,form-control" type="email" id="UserEmail" name="UserEmail"
+                                    placeholder="Enter a valid email address" formControlName="UserEmail" [ngClass]="{'touched-invalid':UserEmail ?.invalid && UserEmail?.touched || UserEmail?.dirty}" [(ngModel)]= "EmailUser" />
+                                <p *ngIf="( UserEmail ?.invalid && UserEmail?.touched || UserEmail?.dirty)">
+                                    <span class="err" *ngIf="UserEmail?.errors?.['required']">Email is Mandatory</span>
+                                    <span class="err" *ngIf="UserEmail?.errors?.['email']">Email in wrong Format</span>
+                                </p>
+                                
+                        </div>
+                    
+                        <div class="row px-3">
+                            <label style="color:#0381b3;" class="mb-1">
+                                <h6 class="mb-0 text-sm">Password</h6>
+                            </label>
+                            <input type="password" id="password" name="password" placeholder="Enter password" class="form-control" formControlName="password" [ngClass]="{'touched-invalid':password ?.invalid && password?.touched || password?.dirty}" [(ngModel)]= "PasswordUser"/>
+                            
+                            <p *ngIf="(password?.invalid && password?.touched || password?.dirty)">
+
+                                <span class="err" *ngIf="password?.errors?.['required']">Password is Mandatory</span>
+        
+                                <span class="err" *ngIf="password?.errors?.['minlength']">Password should be minimun 6 characters</span>
+                            </p>
+                        </div>
+                    
+                        <div class="row mb-3 mt-4 mx-auto px-3">
+                            <button (click)="generateOtp(EmailUser,PasswordUser)"  type="submit" class="btn text-center " [disabled]="UserForm.invalid" [ngClass]="{'enabled-btn':!UserForm.invalid,'disabled-btn':UserForm.invalid}">Generate
+                                OTP</button>
+                        </div>
+
+                        <div class="row px-3">
+                            <input type="number" [disabled]="!isGenerateOtpClicked" formControlName="OtpValidate"
+                            placeholder="Enter The Otp Received" [(ngModel)]= "Currotp"/>
+                        </div>
+
+                        <div class="row mb-3 mt-4 mx-auto px-3">
+                            <button (click)="validateOtp(EmailUser,Currotp)" type="submit" [disabled]="!isGenerateOtpClicked"
+                            class="btn text-center btn-primary-spacing" [ngClass]="{'enabled-btn':isGenerateOtpClicked,'disabled-btn':!isGenerateOtpClicked}">Validate OTP</button>
+                            <button  type="submit" [disabled]="!isValidateOtpClicked"
+                            class="btn btn-blue text-center btn-primary-spacing " [ngClass]="{'enabled-btn':isValidateOtpClicked,'disabled-btn':!isValidateOtpClicked}" routerLink="/adminaction">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
