@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-image: url(../assets/images/blue1.jpg);
+  background-size: 100%;
+
+}
+/* CSS for main section */
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: whitesmoke;
+    width:29%;
+    padding: 20px;
+    border:1px solid;
+    box-shadow: 0 4px 8px 0;
+    transition:0.3s;
+    margin-left:70px;
+    margin-top: 220px;
+    margin-bottom: 70px;
+    margin-right: 70px;
+    height: 200px;
+}
+
+.intro h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 45px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.intro p {
+  font-size: 20px;
+  color: #d1d1d1;
+ 
+  margin: 20px 0;
+}
+
+.intro button {
+  background-color: #5edaf0;
+  color: #000;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+}
+
+.card p{
+    text-align: center;
+    margin-top: 5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.card:hover{
+    box-shadow: 0 8px 16px 0;
+}
+.intro:hover{
+    box-shadow: 0 8px 16px 0;
+}
+.main{
+    display:flex;
+}
+
+
+.card{
+    background-color: whitesmoke;
+    width:50%;
+    padding: 50px;
+    border:1px solid;
+    box-shadow: 0 4px 8px 0;
+    transition:0.3s;
+    margin-top: 30px;
+    margin-left: 70px;
+    margin-bottom: 70px;
+    margin-right: 70px;
+    height: 200px;
+    width: 30%;
+    text-align: center;
+}
+h1,h3{
+    text-align: center;
+}
+.welcome{
+    background-color: lightskyblue;
+}
