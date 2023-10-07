@@ -15,8 +15,7 @@ namespace QuizWiz.Controllers
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Question>> GetQuestionByIdAPI(int id) => await comp.GetQuestionByQId(id);
-        //[HttpGet("{id}")]
-
+        
         [HttpGet]
         [Route("qname")]
         public async Task<ActionResult<Question>> GetQuestionByQNameAPI([FromQuery] string qname)

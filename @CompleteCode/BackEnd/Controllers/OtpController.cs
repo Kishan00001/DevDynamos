@@ -25,11 +25,8 @@ namespace QuizWiz.Controllers
                 return Ok("OTP sent successfully.");
             }catch (Exception ex)
             {
-                //return StatusCode(500, $"Internal server error: {ex.Message}");
                 return Ok($"{ex.Message}");
             }
-            //return await comp.GetUserByEmail(email);
-            //return CreatedAtAction(nameof(GetUserByIdAPI), new { id = user.UserId }, user)
         }
         [HttpGet]
         [Route("validateOTP")]
@@ -42,11 +39,8 @@ namespace QuizWiz.Controllers
             }
             catch (Exception ex)
             {
-                //return StatusCode(500, new { error = $"Internal server error: {ex.Message}" });
                 return Ok($"{ex.Message}");
             }
-            //comp.validateOTP(email,otp);
-            //return await comp.GetUserByEmail(email);
         }
     }
 }

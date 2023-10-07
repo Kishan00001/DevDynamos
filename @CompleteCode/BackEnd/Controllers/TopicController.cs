@@ -47,7 +47,7 @@ namespace QuizWiz.Controllers
             {
                 comp.resetTest();
                 Console.WriteLine("Test Reset Successfully");
-                return Ok("Everything reset successfully");
+                return Ok("Previous Tests reset Successfully");
             }
             catch (Exception ex)
             {

@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System.Net;
 using OfficeOpenXml.Style;
 using System.Resources;
+using System.Threading.Tasks;
 
 namespace QuizWiz.Models
 {
@@ -123,7 +124,7 @@ namespace QuizWiz.Models
         public async Task<List<Question>> GetShuffledQuestions(int topicId)
         {
             Random rand = new Random();
-            List<Question> list = await _dbContext.QuestionTables.ToListAsync();
+            List<Question> list = await _dbContext.QuestionTables.Where(q=>q.TopicId==topicId).ToListAsync();
             for(int i = list.Count - 1; i > 0; i--)
             {
                 int j = rand.Next(0, i + 1);
@@ -185,10 +186,6 @@ namespace QuizWiz.Models
             Random rand = new Random();
             Option option = await _dbContext.OptionTables.Where(opt=>opt.QId==QId).FirstAsync() ?? throw new Exception("Invalid Question ... No options found"); ;
 
-            //return await users.Where(u => u.UserEmail == email).FirstAsync() ?? throw new Exception("User with that Email Id is not found");
-            //List<Option> optList = await _dbContext.Q.FindAsync(QId) ?? throw new Exception("Question with that question id is not found");
-
-
             List<String> optValues = new List<string>{option.OptionA, option.OptionB, option.OptionC, option.OptionD};
 
             for (int i = optValues.Count - 1; i > 0; i--)
@@ -233,8 +230,7 @@ namespace QuizWiz.Models
             else
                 throw new Exception("Option with that option id is not found");
             await _dbContext.SaveChangesAsync();
-            //return Task<string>
-            //return Ok("File Deleted Successfully");
+           ;
         }
 
         /******************************  M  I  S  C  E  L  L  A  N  E  O  U  S  ****************************/
@@ -297,7 +293,8 @@ namespace QuizWiz.Models
             MailMessage msg = new MailMessage(sendermail, recipientemail)
             {
                 Subject = "Welcome to QuizWiz",
-                Body = $"A login attempt was made using this mail ID. OTP for logging Successfully is: {otp}...It will expire after 5 minutes. Ignore if the attempt was not made by you."
+                IsBodyHtml = true,
+                Body = HTMLSendOTP(_dbContext.UserTables.Where(user => user.UserEmail == recipientemail)?.First().UserName ?? "", otp)
             };
             try
             {
@@ -346,5 +343,13 @@ namespace QuizWiz.Models
                 throw new Exception(ex.Message);
             }
         }
+    
+        public string HTMLSendOTP(string name,int otp)
+        {
+            string content = $"<html><body>    <div style=\"font-family: Helvetica,Arial,sans-serif;overflow:auto;line-height:2;background-color: rgba(204, 176, 231, 0.564); margin:30px;text-align:center\">        <div style=\"margin:30px auto;padding:5px \">            <div style=\"border-bottom:1px solid #eee\">                <a href=\"\" style=\"font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600\">QuizWiz</a>            </div>            <p style=\"font-size:1.1em\"><i>Hi,{name}👋</i></p>            <p>A login attempt was made using this mail Id. OTP for logging successfully is </p>            <h2 style=\"background:rgb(58, 13, 103);margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;\">{otp}</h2><br>            <p>This OTP will expire in 5 minitues.Ignore if the attempt was not made by you.<br>Thank you for using QuizWiz</p>            <p style=\"font-size:0.9em;\">                Regards,<br>                Team QuizWiz            </p>        </div>    </div></body></html>";
+            return content;
+        }
     }
+
+
 }

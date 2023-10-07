@@ -17,6 +17,7 @@ namespace QuizWiz.Models
             builder.Entity<Question>()
                 .HasIndex(q => q.QName)
                 .IsUnique();
+            builder.Entity<User>().HasIndex(user=>user.UserEmail).IsUnique();
         }
     }
 }
