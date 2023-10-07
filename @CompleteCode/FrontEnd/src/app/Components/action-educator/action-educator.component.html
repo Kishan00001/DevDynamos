@@ -1,7 +1,7 @@
 <body>
     <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
         <div class="card card0 border-0">
-            <h2 class=" text-center " style="color:#0381b3;"> Educator Page</h2>
+            <h2 class=" text-center " style="color:rebeccapurple"> Educator Page</h2>
             <div class="row d-flex">
                 <div class="col-lg-6">
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
@@ -9,32 +9,38 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
+                    
                     <div class="card2 card border-0 px-4 py-5">
                         <div class="row px-3">
-                            <!-- <label style="color:#0381b3;">Select Topic 
+                            <!-- <label style="color: rgba(204, 176, 231, 0.564);">Select Topic 
                                 <select>
                                 
                                 </select>
                             </label> -->
-                            <label style="color:#0381b3;">Enter The Topic Name:
-                                <input type="text" placeholder="Enter The Topic Name" [(ngModel)]= "newTopic.topicName"/>
+                            <label style="color:rgb(55, 33, 76)">Enter The Topic Name:
+                                <input  #topicName type="text" placeholder="Enter The Topic Name" [(ngModel)]= "newTopic.topicName" [(ngModel)]="TopicName" (keyup)="FileUpload()" required name="TopicName" id="TopicName" />
+                                
+                       
+    
+                                
                             </label>
                             <br>
                             <!-- UPLOADFILE -->
                             <div class="upload mt-2">
-                                <label style="color:#0381b3;">Upload File:
+                                <label style="color:rgb(55, 33, 76)">Upload File:
                                 </label>
-                                    <input type="file" class="form-control" #file placeholder="Choose file" (change)="uploadFile(file.files)" style=" display:inline-block;display:none;"/>
-                                    <button id="upload" class="btn btn-info text-center" (click)="file.click()">Upload</button><br><br>
+                                    <input type="file" class="form-control mb-4" #file placeholder="Choose file" (change)="uploadFile(file.files)" [disabled]="isFileUploaded"
+                                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                                    <!-- <button id="upload" class="btn btn-info text-center" (click)="file.click()">Upload</button><br><br> -->
                             </div>
-                            <!-- <label style="color:#0381b3;" class="mb-1" id="NofQ">
+                            <!-- <label style="color: rgba(204, 176, 231, 0.564);" class="mb-1" id="NofQ">
                                 <h6 class="mb-0 text-sm">Number Of Questions</h6>
                             </label>
                             <input type="number" class="form-control" name="NofQ" min="1" max="10" [(ngModel)]="total"> -->
                         </div>
-
+                            <!-- for future scope -->
                         <!-- <div class="row px-3">
-                            <h6 style="color: #0381b3;" class="mb-0 text-sm">Select Category</h6>
+                            <h6 style="color:  rgba(204, 176, 231, 0.564);" class="mb-0 text-sm">Select Category</h6>
                             <div class="dInput" v-if="activeStage == 3">
                                 <label for="easyValue">Easy
                                     <input type="number" [(ngModel)]="easy" placeholder="Easy">
@@ -51,10 +57,13 @@
                             <button class="btn btn-info">Generate ID</button>
                         </div> -->
                         <div class="button1">
-                            <button class="btn btn-info" (click)="resetAll()">Reset Tests</button>
+                            <!-- <button class="btn btn-info" [disabled]="!uploadFile" (click)="resetAll()">Reset Tests</button> -->
+                            <button class="reset" (click)="resetAll()">Reset Tests</button>
                         </div>
                         <br>
                     </div>
+            
+
                 </div>
             </div>
         </div>

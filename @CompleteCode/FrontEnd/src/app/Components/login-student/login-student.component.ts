@@ -12,7 +12,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class LoginStudentComponent {
   EmailUser:string="";
   PasswordUser:string="";
-  Currotp : number = 0;
+  Currotp! : number;
   constructor(private otpService:OtpService, private userService: UserService){}
   UserForm: FormGroup = new FormGroup({
     UserEmail: new FormControl("", [Validators.required, Validators.email]),
@@ -61,6 +61,9 @@ export class LoginStudentComponent {
       if(data=="OTP validated successfully."){
         alert(data);
         this.isValidateOtpClicked = true;
+        this.userService.getUserByMail(email).subscribe((userdata)=>{
+        localStorage.setItem("name",userdata.userName);
+        })
       }
       else{
         alert(data);

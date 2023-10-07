@@ -2,7 +2,7 @@
 .card0 {
     box-shadow: 0px 4px 8px 0px #757575;
     border-radius: 20px;
-    background-color: #b1d8ebda;
+    background-color:rgba(204, 176, 231, 0.564);
 }
 
 .card2 {
@@ -88,7 +88,7 @@ width: 150px;
 }
 
 .enabled-btn {
-    background-color: #2f6dab;
+    background-color:rgb(58, 13, 103);
     width: 150px;
     color: #fff;
     

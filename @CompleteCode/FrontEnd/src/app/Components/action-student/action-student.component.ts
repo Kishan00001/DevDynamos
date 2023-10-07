@@ -7,12 +7,13 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class ActionStudentComponent {
 
+  studName : string = "";
+
   @ViewChild('name') nameKey!: ElementRef;
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
   startQuiz(){
-    localStorage.setItem("name",this.nameKey.nativeElement.value);
+    // localStorage.setItem("name",this.nameKey.nativeElement.value);
   }
 }

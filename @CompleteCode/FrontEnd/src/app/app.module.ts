@@ -5,7 +5,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './Components/home/home.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -18,12 +17,12 @@ import { LoginStudentComponent } from './Components/login-student/login-student.
 import { LoginEducatorComponent } from './Components/login-educator/login-educator.component';
 import { ActionEducatorComponent } from './Components/action-educator/action-educator.component';
 import { ActionStudentComponent } from './Components/action-student/action-student.component';
-import { FileUploadComponent } from './Components/file-upload/file-upload.component';
+import { HomepageComponent } from './Components/homepage/homepage.component';
+import { LoginComponent } from './Components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     NavBarComponent,
     RegistrationComponent,
     QuestionComponent,
@@ -33,7 +32,8 @@ import { FileUploadComponent } from './Components/file-upload/file-upload.compon
     LoginEducatorComponent,
     ActionEducatorComponent,
     ActionStudentComponent,
-    FileUploadComponent
+    HomepageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

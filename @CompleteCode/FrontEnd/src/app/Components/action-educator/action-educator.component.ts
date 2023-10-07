@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { TopicService } from 'src/app/Services/topic.service';
 import { Topic } from 'src/app/Models/topic';
@@ -10,6 +10,16 @@ import { Topic } from 'src/app/Models/topic';
   styleUrls: ['./action-educator.component.css']
 })
 export class ActionEducatorComponent implements OnInit{
+  TopicName:string='';
+  isFileUploaded:Boolean=true;
+  FileUpload() {
+    if(this.TopicName == ''){
+     this.isFileUploaded=true;}
+     else{
+this.isFileUploaded=false
+     }
+  }
+
   // easy: number = 0;
   // medium: number = 0;
   // hard: number = 0;
@@ -22,6 +32,8 @@ export class ActionEducatorComponent implements OnInit{
   //   this.result = this.total - (this.easy + this.medium);
   //   console.log(this.result);
   // }
+  @ViewChild('topicName') topicNameKey!: ElementRef;
+  
   progress: number=0;
   message: string="Welcome";
   newTopic: Topic = {} as Topic;
@@ -29,6 +41,11 @@ export class ActionEducatorComponent implements OnInit{
   
   constructor(private http: HttpClient,private topicService:TopicService) { }
   ngOnInit() {
+    // this.resetAll();
+    this.topicService.resetAllTests().subscribe((data)=>{
+      // console.log(data);
+      // alert(data);
+    });
   }
   uploadFile = (files:FileList|null) => {
     if (files?.length === 0) {
@@ -41,26 +58,22 @@ export class ActionEducatorComponent implements OnInit{
     this.http.post('http://localhost:5047/api/FileAPI', formData, {reportProgress: true, observe: 'events'})
       .subscribe({
         next: (event) => {
-        if (event.type === HttpEventType.UploadProgress)
-          this.progress = Math.round(100 * event.loaded / event.total!);
-        else if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
+        if (event.type === HttpEventType.Response) {
+          alert("File Uploaded and Question Set Successfully");
           this.onUploadFinished.emit(event.body);
         }
       },
       error: (err: HttpErrorResponse) => console.log(err)
     });
 
-    //method to generate test Id
     
-    
-    // method to add test
+    localStorage.setItem("topicName",this.topicNameKey.nativeElement.value);
+
     this.newTopic.topicFile= fileToUpload.name;
     this.topicService.addTopic(this.newTopic).subscribe((top)=>{
-      alert("Question Set Successfully");
     })
-    // console.log(fileToUpload.name);
   }
+
   //method to reset all test
   resetAll(){
     this.topicService.resetAllTests().subscribe((data)=>{

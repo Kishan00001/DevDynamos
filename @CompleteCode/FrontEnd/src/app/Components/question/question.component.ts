@@ -8,65 +8,58 @@ import { QuestionService } from 'src/app/Services/question.service';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-  
+
   public name: string = "";
-  
+  public topName: string = "";
   public questionList: any = [];
   public currentQuestion: number = 0;
   public points: number = 0;
-  public questionShuffledList:any=[]
-  
+  public questionShuffledList: any = []
+
   counter = 60;
   correctAnswer: number = 0;
   inCorrectAnswer: number = 0;
   interval$: any;
   progress: string = "0";
-  isQuizCompleted : boolean = false;
+  isQuizCompleted: boolean = false;
   constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
+    history.pushState(null, document.title, location.href);
+    window.addEventListener('popstate', function (event) {
+      history.pushState(null, document.title, location.href);
+    });
+
+
     this.name = localStorage.getItem("name")!;
+    this.topName = localStorage.getItem("topicName")!;
+    
     this.getAllQuestions();
     this.startCounter();
-    this.questionService.getAllShuffledQuestions(1).subscribe(data=>{
-      this.questionShuffledList = data;
 
-      // console.log(this.questionShuffledList);
-      // console.log(JSON.stringify(this.questionShuffledList));
-      // alert(JSON.stringify(this.questionShuffledList));
-      // alert(this.questionService.QJsonFormatter(1));
+    this.questionService.getAllShuffledQuestions(1).subscribe(data => {
+      this.questionShuffledList = data;
     });
   }
   getAllQuestions() {
-    // this.questionService.getQuestionJson()
-    //   .subscribe(res => {
-    //     this.questionList = res.questions;
-    //   })
-    // debugger;
-      // this.questionService.QJsonFormatter(1)
-      // .subscribe((resp: any) => {
-      //   this.questionList = resp;
-      // })
-      this.questionList = this.questionService.QJsonFormatter(1);
+    this.questionList = this.questionService.QJsonFormatter(1);
   }
   nextQuestion() {
-    // debugger;
-    // if(this.currentQuestion!=null)
-      this.currentQuestion++;
+    this.currentQuestion++;
   }
   previousQuestion() {
     this.currentQuestion--;
   }
   answer(currentQno: number, option: any) {
 
-    if(currentQno === this.questionList.length){
+    if (currentQno === this.questionList.length) {
       this.isQuizCompleted = true;
       this.stopCounter();
     }
     // if (option.correct) {
-      // debugger;
-    if (this.questionList[currentQno-1].correct==option.text) {
-      this.points += 10;
+    // debugger;
+    if (this.questionList[currentQno - 1].correct == option.text) {
+      this.points += 4;
       this.correctAnswer++;
       setTimeout(() => {
         this.currentQuestion++;
@@ -83,7 +76,7 @@ export class QuestionComponent implements OnInit {
         this.getProgressPercent();
       }, 1000);
 
-      this.points -= 10;
+      this.points -= 1;
     }
   }
   startCounter() {
@@ -93,7 +86,7 @@ export class QuestionComponent implements OnInit {
         if (this.counter === 0) {
           this.currentQuestion++;
           this.counter = 60;
-          this.points -= 10;
+          this.points -= 1;
         }
       });
     setTimeout(() => {

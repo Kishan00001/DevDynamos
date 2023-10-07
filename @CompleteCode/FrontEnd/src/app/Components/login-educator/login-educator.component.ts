@@ -13,7 +13,7 @@ export class LoginEducatorComponent {
   users: User = {} as User;
   EmailUser:string="";
   PasswordUser:string="";
-  Currotp : number = 0;
+  Currotp! : number;
   constructor(private otpService:OtpService, private userService : UserService){}
   UserForm: FormGroup = new FormGroup({
     UserEmail: new FormControl("", [Validators.required, Validators.email]),

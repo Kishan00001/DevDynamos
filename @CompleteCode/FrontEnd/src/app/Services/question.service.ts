@@ -50,6 +50,7 @@ export class QuestionService {
 
   public QDiffChecker(qs:Question[],hard:number,medium:number,easy:number):  Question[]{
       return qs;
+
   }
 
   public QJsonFormatter(id:number):any{

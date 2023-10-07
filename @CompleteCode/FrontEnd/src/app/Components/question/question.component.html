@@ -1,17 +1,22 @@
 <div class="container mt-5">
     <div class="card">
+    <ng-container *ngIf="!isQuizCompleted">
         <div class="d-flex justify-content-between p-3">
             <div class="image">
-                <img src="assets/Images/logo1.jpg" width="90" alt="logo">
+                <img src="assets/Images/Logo2.jpg" width="90" alt="logo">
+            </div>
+            <div>
+                <h2>Test Name: {{topName}}</h2>
             </div>
             <div class="quiz-header">
                 <h4 style="font-family: cursive;">Welcome {{name}}</h4>
                 <span style="font-style: italic;">Good Luck!!!</span>
             </div>
-        </div>
+        </div>        
+    </ng-container>
 
         <ng-container *ngIf="!isQuizCompleted">
-            <div class="d-flex justify-content-around py-3 btn btn-primary">
+            <div class="d-flex justify-content-around py-3 btn" style="background-color: rgba(204, 176, 231, 0.564)">
                 <div class="score">
                     <h5>{{points}} Points</h5>
                 </div>
@@ -23,7 +28,7 @@
                 </div>
             </div>
             <div class="progress mb-3">
-                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped" style="background-color: rgb(58, 13, 103);" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="question">
                 <div class="card">
@@ -49,8 +54,9 @@
         </ng-container>
 
         <ng-container *ngIf="isQuizCompleted">
-            <div class="row d-flex justify-content-between">
-                <img style="width: 30%;height: 20%;" class="img-fluid col-sm-12 mx-auto" src="https://icon-library.com/images/celebration-icon-png/celebration-icon-png-7.jpg" alt="">
+            <div class="row d-flex justify-content-between mt-2">
+                <!-- <img style="width: 30%;height: 20%;" class="img-fluid col-sm-12 mx-auto" src="https://icon-library.com/images/celebration-icon-png/celebration-icon-png-7.jpg" alt=""> -->
+                <img style="width: 30%;height: 20%;" class="img-fluid col-sm-12 mx-auto" src="https://icon-library.com/images/thumbs-icon/thumbs-icon-15.jpg" alt="">
                 <div class="result text-center col-md-6 col-sm-12">
                     
                     <h3>Congratulations!! <br>You have completed the quiz. <br>Below is your result:</h3>
@@ -58,9 +64,21 @@
                     <p>Total Correct Answered : {{correctAnswer}} </p>
                     <p>Total Wrong Answered : {{inCorrectAnswer}} </p>
                     <p>Your Score : {{points}} Points </p>
+                    <h4>Rate Your Experience</h4>
+                    <div class="rate" style="margin-left: 190px;">
+                        <input type="radio" id="star5" name="rate" value="5" [routerLink]= "['/quizwizhome']" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" [routerLink]= "['/quizwizhome']"/>                
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" [routerLink]= "['/quizwizhome']"/>
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" [routerLink]= "['/quizwizhome']"/>
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" [routerLink]= "['/quizwizhome']"/>                
+                        <label for="star1" title="text">1 star</label>
+                    </div>
                 </div>
             </div>
         </ng-container>
-
     </div>
 </div>                                      

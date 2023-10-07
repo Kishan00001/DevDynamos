@@ -1,0 +1,93 @@
+img {
+    border-radius: 100;
+    border-radius: 50%;
+}
+
+.card {
+    margin-top: 80px;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-left: 220px;
+    width: 310px;
+    background-color:rgba(204, 176, 231, 0.564);
+    height: 340px;
+    border:none;
+}
+.card:hover{
+    transform: scale(0.95);
+    box-shadow: 0 10px 15px 0 rgb(0, 0, 0, 2);
+    background-color:rgba(102, 51, 153, 0.381);
+}
+
+button{
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  button:after {
+    content: '>>';
+    position: absolute;
+    opacity: 0;  
+    top: 5px;
+    right: -30px;
+    transition: 0.5s;
+  }
+  
+  button:hover{
+    padding-right: 24px;
+    padding-left:8px;
+    background-color:rgba(52, 22, 80, 0.564);
+  }
+  
+  button:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
+div {
+    display: inline-block;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+p,h4 {
+    text-align: center;
+
+}
+#title{
+    font-size: 30px;
+    font-weight: 800;
+    color: black;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-style: italic;
+    text-shadow: 2px 2px 4px aqua;
+}
+#title:hover{
+    font-size: 35px;
+    font-weight: 900;
+    color: blue;
+    text-align: center;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-style:oblique;
+    text-shadow: 2px 2px 8px aqua;
+}
+.btns{
+    background-color:rgba(102, 51, 153, 0.632);
+    
+    border :none;
+    border-radius: 5px;
+    padding:8px;
+    text-align: center;
+}

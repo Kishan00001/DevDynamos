@@ -1,7 +1,7 @@
 .card0 {
     box-shadow: 0px 4px 8px 0px #757575;
     border-radius: 20px;
-    background-color: #b1d8ebda;
+    background-color: rgba(198, 178, 217, 0.564);
     width:800px;
     margin-left: 180px;
 }
@@ -90,7 +90,7 @@ a {
 }
 
 .btn-blue:hover {
-    background-color: #0381b3;
+    background-color:  rgba(204, 176, 231, 0.564);
     cursor: pointer;
 }
 
@@ -107,8 +107,18 @@ a {
     color:darkred;
 }
 
-.button1{
-    text-align: center;
+.reset{
+    background-color: rgb(155, 133, 177);
+    color: #000;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-left: 55px;
+    /* font-weight: bold; */
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+    
 }
 
 .dInput{
